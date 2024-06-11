@@ -20,12 +20,11 @@ export default function Quiz() {
         setUserContext({ pref : choiceName});
     }
 
-    // // Queries
     const {data} = useQuery({ queryKey: ['subjects'], queryFn: getSubjects })
 
     if(userContext?.pref){
         return (
-            <p>Pulled your data from userContext {userContext?.pref}</p>
+            <p>Pulled your data from userContext: {userContext?.pref}</p>
         );
     }
 

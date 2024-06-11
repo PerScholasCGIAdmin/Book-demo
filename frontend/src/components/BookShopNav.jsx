@@ -11,11 +11,11 @@ export default function BookShopNav() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink to={"/home"}>Home</NavLink>
-                        <NavLink to={"/about"}>About</NavLink>
-                        <NavLink to={"/search"}>Search</NavLink>
-                        <NavLink to={"/random"}>Random</NavLink>
-                        <NavLink to={"/quiz"}>Quiz</NavLink>
+                        <Nav.Link><NavLink to={"/home"}>Home</NavLink></Nav.Link>
+                        <Nav.Link><NavLink to={"/about"}>About</NavLink></Nav.Link>
+                        <Nav.Link><NavLink to={"/search"}>Search</NavLink></Nav.Link>
+                        <Nav.Link><NavLink to={"/random"}>Random</NavLink></Nav.Link>
+                        <Nav.Link><NavLink to={"/quiz"}>Quiz</NavLink></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

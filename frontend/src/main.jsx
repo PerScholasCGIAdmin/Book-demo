@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 
 import {
-    useQuery,
-    useMutation,
-    useQueryClient,
     QueryClient,
     QueryClientProvider,
 } from '@tanstack/react-query'
