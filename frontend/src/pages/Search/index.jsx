@@ -3,6 +3,7 @@ import {useState} from "react";
 import {Form} from "react-router-dom";
 import {Button} from "react-bootstrap";
 import {searchAuthor} from "../../services/bookApi.js";
+import SearchResult from "./SearchResult.jsx";
 
 export default function Search() {
     const [result, setResult] = useState(null);
@@ -26,8 +27,7 @@ export default function Search() {
               <input value={author} onChange={handleChange} type="text" />
               <Button onClick={searchQuery}>Search</Button>
           </Form>
-          <p>Search Results</p>
-          {result && <h2>Book Name - {result.desc}</h2>}
+          {result && <SearchResult result={result}/>}
       </>
     );
 }

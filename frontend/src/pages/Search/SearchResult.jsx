@@ -1,12 +1,11 @@
 import {useState} from "react";
 
 
-export default function SearchResult({result}) {
-
-
+export default function SearchResult(prop) {
     return (
         <>
-            <p>{result}</p>
+            <p>Search Results:</p>
+            <p>Book Name : {prop.result.desc}</p>
         </>
     );
 }

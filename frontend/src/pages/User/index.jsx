@@ -15,24 +15,25 @@ export default function UserPage() {
         setUserContext
     } = useContext(CurrentUserContext);
 
-    const  pickUser = function (userId) {
+    const  pickUser = function (userId, name) {
         let currentUserData = userContext
         if (currentUserData === null) {
             currentUserData = {}
         }
         currentUserData.userId = userId;
+        currentUserData.username = name;
         setUserContext(currentUserData);
     }
 
     if(userContext === null){
         console.log("No data found");
     }
-    // // Queries
+
     const {data} = useQuery({ queryKey: ['users'], queryFn: getUsers })
     console.log(data)
     if(userContext?.userId){
         return (
-            <p>Pulled your data from userContext {userContext?.pref}</p>
+            <p>Pulled your data from userContext: {userContext?.pref}</p>
         );
     }
 

@@ -9,6 +9,14 @@ router.get('/', function(req, res, next) {
     res.status(200).json(mockDb)
 });
 
+router.get('/:id', function(req, res, next) {
+    let bookId = req.params.authorName
+    console.log(authorName)
+    let book = mockDb.filter(x => x.id === bookId)
+    console.log(book)
+    res.status(200).json(book[0])
+});
+
 router.get('/author/:authorName', function(req, res, next) {
     let authorName = req.params.authorName
     console.log(authorName)
