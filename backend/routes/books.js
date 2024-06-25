@@ -22,6 +22,11 @@ router.get('/author/:authorName', function(req, res, next) {
     console.log(authorName)
     let book = mockDb.filter(x => x.author === authorName)
     console.log(book)
+    if(book === undefined | book.length == 0){
+        console.log("author not found")
+        res.status(200).json({id: 0, desc : "error", author: "error"})
+    }
+    
     res.status(200).json(book[0])
 });
 

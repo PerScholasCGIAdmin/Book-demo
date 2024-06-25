@@ -15,8 +15,7 @@ export default function Quiz() {
         setUserContext
     } = useContext(CurrentUserContext);
 
-    const  setGenreOption = function (choiceName) {
-
+    const setGenreOption = function (choiceName) {
         setUserContext({ pref : choiceName});
     }
 

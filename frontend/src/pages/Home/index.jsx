@@ -16,7 +16,7 @@ import {
 import BookShopCard from "../../components/BookCard.jsx";
 
 export default function Home() {
-    //Reminder that this component is a mess for you to clean up as practice
+    //Reminder that this component is a mess for you to clean up as practice. Consider custom hooks to abstract some of this out
     const {
         userContext,
     } = useContext(CurrentUserContext);
