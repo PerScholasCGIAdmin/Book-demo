@@ -3,7 +3,7 @@ import {useState} from "react";
 
 export default function SearchResult(prop) {
 
-    if(prop.result.desc == "error"){
+    if(prop.result.description == "error"){
         return (
             <>
                 <p>author not found</p>
@@ -13,7 +13,7 @@ export default function SearchResult(prop) {
     return (
         <>
             <p>Search Results:</p>
-            <p>Book Name : {prop.result.desc}</p>
+            <p>Book Name : {prop.result.description}</p>
         </>
     );
 }

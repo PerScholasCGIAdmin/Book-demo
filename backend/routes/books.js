@@ -1,33 +1,57 @@
 var express = require('express');
 var router = express.Router();
-let mockDb = []
-mockDb.push({id: 1, desc: "Cradle", author: "Will"})
-mockDb.push({id: 2, desc: "Another Country", author: "James"})
-mockDb.push({id: 3, desc: "Eragon", author: "Christopher"})
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.status(200).json(mockDb)
+
+
+// Load the model
+ const Book = require('../models/books');
+
+// Get all books - @route   GET /books
+router.get('/', (req, res) => {
+    Book.find()
+      .then(books => res.json(books))
+      .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
+  });
+
+// Get book by id -  @route   GET /books/:id 
+router.get('/:id', (req, res) => {
+    Book.findById(req.params.id)
+      .then(book => res.json(book))
+      .catch(err => res.status(404).json({ nobookfound: 'No Book found' }));
+  });
+
+// Get book by author -  @route   GET /books/author/:authorName 
+router.get('/author/:authorName', (req, res) => {
+    Book.findOne({ author: req.params.authorName }) 
+      .then(book => {
+          if (!book) {
+              return res.status(404).json({ nobookfound: 'No Book found' });
+          }
+          res.json(book); // If found, respond with JSON of the book
+      })
+      .catch(err => res.status(400).json({ error: err.message })); // Handle any errors
 });
 
-router.get('/:id', function(req, res, next) {
-    let bookId = req.params.authorName
-    console.log(authorName)
-    let book = mockDb.filter(x => x.id === bookId)
-    console.log(book)
-    res.status(200).json(book[0])
-});
+// Add book - @route   POST /books
+router.post('/', (req, res) => {
+    Book.create(req.body)
+      .then(book => res.json({ msg: 'Book added successfully' }))
+      .catch(err => res.status(400).json({ error: 'Unable to add this book' }));
+  });
 
-router.get('/author/:authorName', function(req, res, next) {
-    let authorName = req.params.authorName
-    console.log(authorName)
-    let book = mockDb.filter(x => x.author === authorName)
-    console.log(book)
-    if(book === undefined | book.length == 0){
-        console.log("author not found")
-        res.status(200).json({id: 0, desc : "error", author: "error"})
-    }
-    
-    res.status(200).json(book[0])
-});
+// Delete book by id - @route   DELETE /books/:id 
+router.delete('/:id', (req, res) => {
+    Book.findByIdAndDelete(req.params.id)
+      .then(book => res.json({ mgs: 'Book entry deleted' }))
+      .catch(err => res.status(404).json({ error: 'No such a book' }));
+  });
+
+// Update book by id - @route -   PUT /books/:id
+router.put('/:id', (req, res) => {
+    Book.findByIdAndUpdate(req.params.id, req.body)
+      .then(book => res.json({ msg: 'Updated successfully' }))
+      .catch(err =>
+        res.status(400).json({ error: 'Unable to update the Database' })
+      );
+  });
 
 module.exports = router;

@@ -31,7 +31,7 @@ export default function Quiz() {
         return (
             <>
                 <h1> Our Fun quiz </h1>
-                {data?.map(subj => <BookShopCard desc={subj.desc} name={subj.name} key={subj.id} setGenreOption={setGenreOption} />)}
+                {data?.map(subj => <BookShopCard desc={subj.description} name={subj.subject} key={subj._id} setGenreOption={setGenreOption} />)}
             </>
         );
     }

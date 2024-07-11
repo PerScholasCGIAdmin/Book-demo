@@ -23,8 +23,6 @@ export default function Home() {
 
     const [userBooks, setUserBooks] = useState([])
     const [pendingBookId, setPendingBookId] = useState(0)
-
-    const [booksLoaded, setbooksLoaded] = useState(false)
     const [bookList, setBookList] = useState([])
 
     if(userContext === null){
@@ -38,7 +36,9 @@ export default function Home() {
         setPendingBookId(bookId);
     }
 
-    const userId = userContext?.userId 
+    const userId = userContext?.userId
+
+    //See how often this is getting called
     const {data} = useQuery({ queryKey: ['userData'], queryFn: getUserData(userId) })
 
     useEffect(() => {
@@ -53,7 +53,8 @@ export default function Home() {
         }
       }, [pendingBookId]);
 
-      useEffect(() => {
+    useEffect(() => {
+        //make note of how often this is being called by using the network tab
         getBooks().then(data => {setBookList(data)});
       }, []);
     
@@ -73,7 +74,7 @@ export default function Home() {
                 <Col>
                 <h2>All Books</h2>
                 <ul>
-                    {bookList && bookList?.map(item => <BookShopCard key={item.id} name={item.id} desc={item.desc} setGenreOption={handleAddBook}/>)}
+                    {bookList && bookList?.map(item => <BookShopCard key={item._id} name={item._id} desc={item.description} setGenreOption={handleAddBook}/>)}
                 </ul>
                 </Col>
             </Row>

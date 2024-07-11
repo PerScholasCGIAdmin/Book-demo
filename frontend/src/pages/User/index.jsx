@@ -41,7 +41,7 @@ export default function UserPage() {
         <>
             <h1> Please Select Your user profile </h1>
             <ul>
-                {data?.map(user => <UserOption userId={user.id} userName={user.name} key={user.id} updateUser={pickUser} />)}
+                {data?.map(user => <UserOption userId={user._id} userName={user.name} key={user._id} updateUser={pickUser} />)}
             </ul>
 
         </>
