@@ -5,6 +5,13 @@ export const searchAuthor = (authorName) =>
     return fetch(url).then((data) => data.json());
 }
 
+export const getBooks = () =>
+{
+    console.log("fetch list of books")
+    return fetch(basePath).then((data) => data.json());
+
+}
+
 // export const searchTitle = (title) => {
 //     console.log("search title: ", title);
 //     const url = `${basePath}/title/${title}`;

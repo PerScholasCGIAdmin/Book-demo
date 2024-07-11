@@ -7,7 +7,7 @@ export default function UserOption({userId, userName, updateUser}) {
 
     function handleSubmit() {
         console.log("setting context user to userId " + userId);
-        updateUser(userId);
+        updateUser(userId, userName);
     }
 
     return (

@@ -28,7 +28,8 @@ import {CurrentUserContext} from "./utils/UserContext.js";
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route element={<Root />} errorElement={<ErrorPage/>}>
-            <Route path="/" element={<UserPage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/user" element={<UserPage />} />
             <Route path="about" element={<About />} />
             <Route path="home" element={<Home />} />
             <Route path="search" element={<Search />} />
